@@ -3,4 +3,19 @@
   <groupId>es.unican.ps</groupId>
   <artifactId>Practica3Procesos</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>Practica3ProcesosCommon</module>
+  	<module>Practica3ProcesosBusiness</module>
+  </modules>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>javax</groupId>
+  		<artifactId>javaee-api</artifactId>
+  		<version>8.0</version>
+  		<scope>provided</scope>  	
+  	</dependency>
+  
+  </dependencies>
 </project>
