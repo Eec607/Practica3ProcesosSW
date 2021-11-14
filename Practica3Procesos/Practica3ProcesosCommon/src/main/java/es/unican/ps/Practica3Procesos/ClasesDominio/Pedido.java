@@ -1,6 +1,6 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
+import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,7 +8,7 @@ public class Pedido {
 	// Atributos de la clase Pedido
 	private String referencia;
 	private Estado estado;
-	private Date fecha;
+	private LocalDate fecha;
 	private LocalTime horaRecogida;
 	
 	// Usuario que hace el pedido
@@ -16,13 +16,22 @@ public class Pedido {
 	// Conjunto de lineas de pedido
 	private Set<LineaPedido> lineasPedido;
 	
-	public Pedido(String referencia, Estado estado, Date fecha, LocalTime horaRecogida, Usuario usuario) {
+	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario) {
 		this.referencia = referencia;
 		this.estado = estado;
 		this.fecha = fecha;
 		this.horaRecogida = horaRecogida;
 		this.usuario = usuario;
 		lineasPedido = new HashSet<LineaPedido>();
+	}
+	
+	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario, Set<LineaPedido> lineasPedido) {
+		this.referencia = referencia;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.horaRecogida = horaRecogida;
+		this.usuario = usuario;
+		this.lineasPedido = lineasPedido;
 	}
 	
 	// Métodos getters y setters de los atributos de Pedido
@@ -38,10 +47,10 @@ public class Pedido {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	public LocalTime getHoraRecogida() {
