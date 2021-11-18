@@ -1,14 +1,19 @@
 package es.unican.ps.Practica3Procesos.CapaNegocio;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 import javax.ejb.Stateful;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
+import es.unican.ps.Practica3Procesos.ClasesDominio.Estado;
 import es.unican.ps.Practica3Procesos.ClasesDominio.LineaPedido;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Pedido;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Usuario;
+import es.unican.ps.Practica3Procesos.InterfacesDominio.IArticulosDAO;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPreparadoPedidos;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO;
@@ -19,27 +24,80 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 	
 	private IPedidosDAO pedidosDAO;
 	private IUsuariosDAO usuariosDAO;
+	private IArticulosDAO articulosDAO;
+	
+	private static LocalTime horaApertura = LocalTime.of(9, 0);
+	private static LocalTime horaCierre = LocalTime.of(21, 0);
+	
+	private Stack<Pedido> pedidosPendientes = new Stack<Pedido>();
+	private Set<LineaPedido> lineasPedido = new HashSet<LineaPedido>();
+	private int id = 0;
+	private String ref = "A"+id;
 
 	public Pedido entregaPedido(String dni, String ref) {
-		Pedido p = existePedido(ref);
-		Usuario u = existeUsuario(dni);
+		Pedido p = buscaPedido(ref);
+		Usuario u = buscaUsuario(dni);
 		
-		if (existeUsuario(dni) && existePedido(ref)) {
+		if (p!=null && u!=null) {
 			// Entregar Pedido
-		};
-		return null;
+			p.setEstado(Estado.ENTREGADO);
+			pedidosDAO.actualizaPedido(p);
+		}
+		return p;
 	}
 	
-	private Pedido existePedido(String dni) {
+	public Pedido procesaPedido() {
+		// Desapila el pedido
+		Pedido p = pedidosPendientes.peek();
+		p.setEstado(Estado.REALIZADO); //(?)
+		return p;
+	}
+
+	public Pedido realizarPedido(LocalTime horaRecogida) {
+		Pedido p = null;		
+		// Comprobar la hora de recogida
+		if (horaRecogida.isBefore(horaRecogida) && horaRecogida.isAfter(horaApertura)) {
+			// TODO: Usuario (Stateful)
+			p = new Pedido(ref, Estado.EN_PROGRESO, LocalDate.now(), horaRecogida, null, lineasPedido);
+			id++;
+			pedidosPendientes.add(p);
+		}
+		return p;		
+	}
+
+	public Set<LineaPedido> onVerCarro() {
+		return lineasPedido;
+	}
+
+	public Articulo onAnhadirAlCarro(Articulo a, int uds) {
+		lineasPedido.add(new LineaPedido(uds, a));
+		return a;
+	}
+
+	public Set<Articulo> onVerListaArticulos() {
+		return articulosDAO.articulos();
+	}
+	
+	/**
+	 * Devuelve el pedido que tiene la referencia pasada como parametro
+	 * @param ref la referencia del pedido
+	 * @return el pedido que tiene la referencia pasada como parametro
+	 */
+	private Pedido buscaPedido(String ref) {
 		Pedido p;
 		if (ref == null) {
 			return null;
 		}
-		p = pedidosDAO.pedido(dni);
+		p = pedidosDAO.pedido(ref);
 		return p;
 	}
 
-	private Usuario existeUsuario(String dni) {
+	/**
+	 * Devuelve el usuario que tiene el dni pasado como parametro
+	 * @param dni el dni del usuario
+	 * @return el usuario que tiene el dni pasado como parametro
+	 */
+	private Usuario buscaUsuario(String dni) {
 		Usuario u;
 		if (dni == null) {
 			return null;
@@ -47,30 +105,7 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 		u = usuariosDAO.usuario(dni);
 		return u;
 	}
-
-	public Pedido procesaPedido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Pedido realizarPedido(LocalTime horaRecogida) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Set<LineaPedido> onVerCarro() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Articulo onAnhadirAlCarro(Articulo a, int uds) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Set<Articulo> onVerListaArticulos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 }
