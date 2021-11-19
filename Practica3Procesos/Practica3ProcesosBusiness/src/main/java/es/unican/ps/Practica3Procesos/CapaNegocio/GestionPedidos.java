@@ -49,19 +49,25 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 	public Pedido procesaPedido() {
 		// Desapila el pedido
 		Pedido p = pedidosPendientes.peek();
-		p.setEstado(Estado.REALIZADO); //(?)
+		p.setEstado(Estado.REALIZADO);
 		return p;
 	}
 
-	public Pedido realizarPedido(LocalTime horaRecogida) {
+	public Pedido realizarPedido(LocalTime horaRecogida, Usuario u) {
 		Pedido p = null;		
-		// Comprobar la hora de recogida
-		if (horaRecogida.isBefore(horaRecogida) && horaRecogida.isAfter(horaApertura)) {
-			// TODO: Usuario (Stateful)
-			p = new Pedido(ref, Estado.EN_PROGRESO, LocalDate.now(), horaRecogida, null, lineasPedido);
-			id++;
-			pedidosPendientes.add(p);
-		}
+		// Comprobar usuario
+		if (u != null) {
+			// Comprobar la hora de recogida
+			if (horaRecogida.isBefore(horaCierre) && horaRecogida.isAfter(horaApertura)) {
+				p = new Pedido(ref, Estado.EN_PROGRESO, LocalDate.now(), horaRecogida, u, lineasPedido);
+				p.calculaPrecio();
+				if (u.getComprasMensuales() >= 10) {
+					p.aplicaDescuento();
+				}
+				id++;
+				pedidosPendientes.add(p);
+			}
+		}		
 		return p;		
 	}
 
@@ -76,6 +82,10 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 
 	public Set<Articulo> onVerListaArticulos() {
 		return articulosDAO.articulos();
+	}
+	
+	public void limpiarCarro() {
+		this.lineasPedido.clear();
 	}
 	
 	/**

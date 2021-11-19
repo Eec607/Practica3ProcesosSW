@@ -16,9 +16,12 @@ public class GestionRegistro implements IGestionRegistro {
 		return u;
 	}
 
-	public Usuario onLogin(Usuario u) {
-		// TODO: Login
-		return u;
+	public Usuario onLogin(String dni) {
+		Usuario user = null;
+		if (dni != null && dni.length() == 9) {
+			user = usuariosDAO.usuario(dni);
+		}
+		return user;
 	}
 
 }

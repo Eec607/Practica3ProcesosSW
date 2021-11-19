@@ -2,6 +2,7 @@ package es.unican.ps.Practica3Procesos.ClasesDominio;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Pedido {
@@ -10,6 +11,8 @@ public class Pedido {
 	private Estado estado;
 	private LocalDate fecha;
 	private LocalTime horaRecogida;
+	private double precio;
+	private static final double DESCUENTO = 0.05;
 	
 	// Usuario que hace el pedido
 	private Usuario usuario;
@@ -22,6 +25,7 @@ public class Pedido {
 		this.fecha = fecha;
 		this.horaRecogida = horaRecogida;
 		this.usuario = usuario;
+		precio = 0.0;
 		lineasPedido = new HashSet<LineaPedido>();
 	}
 	
@@ -74,6 +78,51 @@ public class Pedido {
 	 */
 	public Usuario getUsuario() {
 		return usuario;
+	}
+	
+	/**
+	 * Calcula el precio del pedido
+	 */
+	public void calculaPrecio() {
+		for(LineaPedido l: lineasPedido) {
+			this.precio += l.getCantidad()*l.getArticulo().getPrecio();
+		}
+	}
+	
+	/**
+	 * Aplica descuento al precio total del pedido
+	 */
+	public void aplicaDescuento() {
+		this.precio = (1-DESCUENTO) * this.precio;
+	}
+	
+	/**
+	 * Devuelve el precio del pedido
+	 * @return el precio del pedido
+	 */
+	public double getPrecio() {
+		return this.precio;
+	}
+	
+	@Override
+	public boolean equals(Object pedido) {		
+		if (this == pedido) {
+			return true;
+		}
+		if (pedido == null || getClass() != pedido.getClass()) {
+			return false;
+		}
+		Pedido p = (Pedido) pedido;
+		
+		return Objects.equals(p.estado, estado) &&
+				Objects.equals(p.fecha, fecha) &&
+				Objects.equals(p.horaRecogida, horaRecogida) &&
+				Objects.equals(p.precio, precio);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(referencia, estado, fecha, horaRecogida, precio);
 	}
 
 }

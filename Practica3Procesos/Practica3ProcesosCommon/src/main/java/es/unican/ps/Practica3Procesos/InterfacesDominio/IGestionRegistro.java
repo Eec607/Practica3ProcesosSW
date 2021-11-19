@@ -7,5 +7,5 @@ import javax.ejb.Remote;
 public interface IGestionRegistro {
 	Usuario registrarUsuario(Usuario u);
 	
-	Usuario onLogin(Usuario u);
+	Usuario onLogin(String dni);
 }
