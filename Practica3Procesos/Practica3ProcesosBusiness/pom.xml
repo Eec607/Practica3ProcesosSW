@@ -3,9 +3,10 @@
   <parent>
     <groupId>es.unican.ps</groupId>
     <artifactId>Practica3Procesos</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>    
   </parent>
   <artifactId>Practica3ProcesosBusiness</artifactId>
+  <packaging>war</packaging>
   
   <dependencies>
   	<dependency>
