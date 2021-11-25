@@ -2,7 +2,16 @@ package es.unican.ps.Practica3Procesos.ClasesDominio;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Usuario {
+	
+	@Id
+	private int id;
+	
 	// Atributos de Usuario
 	private String nombre;
 	private String dni;
@@ -11,6 +20,7 @@ public class Usuario {
 	private int comprasMensuales;
 	
 	// Conjunto de pedidos
+	@OneToMany(mappedBy="Pedido")
 	private Set<Pedido> pedidos;
 	
 	/**

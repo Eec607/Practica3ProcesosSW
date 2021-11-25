@@ -5,9 +5,22 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Pedido {
+	
+	@Id
+	private int id;
+	
 	// Atributos de la clase Pedido
 	private String referencia;
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	private LocalDate fecha;
 	private LocalTime horaRecogida;
@@ -17,8 +30,18 @@ public class Pedido {
 	// Usuario que hace el pedido
 	private Usuario usuario;
 	// Conjunto de lineas de pedido
+	@OneToMany
+	@JoinColumn
 	private Set<LineaPedido> lineasPedido;
 	
+	/**
+	 * Constructor de la clase Pedido
+	 * @param referencia
+	 * @param estado
+	 * @param fecha
+	 * @param horaRecogida
+	 * @param usuario
+	 */
 	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario) {
 		this.referencia = referencia;
 		this.estado = estado;
@@ -29,6 +52,15 @@ public class Pedido {
 		lineasPedido = new HashSet<LineaPedido>();
 	}
 	
+	/**
+	 * Constructor de la clase Pedido
+	 * @param referencia
+	 * @param estado
+	 * @param fecha
+	 * @param horaRecogida
+	 * @param usuario
+	 * @param lineasPedido
+	 */
 	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario, Set<LineaPedido> lineasPedido) {
 		this.referencia = referencia;
 		this.estado = estado;

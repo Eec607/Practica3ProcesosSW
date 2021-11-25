@@ -1,9 +1,19 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Articulo {
+	
+	@Id
+	private int id;
+	
+	// Atributos
 	private String nombre;
 	private int unidadesStock;
 	private double precio;
+	
 	public String getNombre() {
 		return nombre;
 	}

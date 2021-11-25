@@ -1,7 +1,20 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
 public class LineaPedido {
+	
+	@Id
+	private int id;
+	
+	// Atributos
 	private int cantidad;
+	@OneToOne
+	@JoinColumn
 	private Articulo articulo;
 	
 	/**
