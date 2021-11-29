@@ -7,6 +7,7 @@
   <modules>
   	<module>Practica3ProcesosCommon</module>
   	<module>Practica3ProcesosBusiness</module>
+  	<module>Practica3ProcesosDAO</module>
   </modules>
   
   <dependencies>
