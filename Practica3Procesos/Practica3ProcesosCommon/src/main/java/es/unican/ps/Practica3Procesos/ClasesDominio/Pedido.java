@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -28,6 +29,7 @@ public class Pedido {
 	private static final double DESCUENTO = 0.05;
 	
 	// Usuario que hace el pedido
+	@ManyToOne
 	private Usuario usuario;
 	// Conjunto de lineas de pedido
 	@OneToMany
@@ -52,6 +54,7 @@ public class Pedido {
 		lineasPedido = new HashSet<LineaPedido>();
 	}
 	
+	
 	/**
 	 * Constructor de la clase Pedido
 	 * @param referencia
@@ -68,7 +71,9 @@ public class Pedido {
 		this.horaRecogida = horaRecogida;
 		this.usuario = usuario;
 		this.lineasPedido = lineasPedido;
-	}
+	}	
+
+	public Pedido() { }
 	
 	// Métodos getters y setters de los atributos de Pedido
 	public String getReferencia() {

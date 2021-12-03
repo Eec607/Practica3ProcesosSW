@@ -26,6 +26,8 @@ public class LineaPedido {
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}
+	
+	public LineaPedido() { }
 
 	/**
 	 * Devuelve la cantidad de articulos de la linea de pedido

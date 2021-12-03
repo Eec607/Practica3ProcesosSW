@@ -24,6 +24,8 @@ public class Articulo {
 		this.precio = precio;
 	}
 	
+	public Articulo() { }
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

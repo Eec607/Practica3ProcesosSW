@@ -1,4 +1,5 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int id;
 	
@@ -20,7 +23,7 @@ public class Usuario {
 	private int comprasMensuales;
 	
 	// Conjunto de pedidos
-	@OneToMany(mappedBy="Pedido")
+	@OneToMany(mappedBy="usuario")
 	private Set<Pedido> pedidos;
 	
 	/**
@@ -38,6 +41,8 @@ public class Usuario {
 		this.comprasMensuales = 0;
 		pedidos = new HashSet<Pedido>();
 	}
+	
+	public Usuario() { }
 	
 	// Métodos getters y setters de los atributos de Usuario
 	public String getNombre() {
@@ -66,6 +71,9 @@ public class Usuario {
 	}
 	public int getComprasMensuales() {
 		return comprasMensuales;
+	}
+	public void setComprasMensuales(int i) {
+		this.comprasMensuales = i;		
 	}
 	public Set<Pedido> getPedidos() {
 		return pedidos;

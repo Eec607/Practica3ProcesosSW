@@ -57,7 +57,7 @@ public class GestionPedidosTest {
 	}
 	
 	@Test
-	public void realizarPedido() {		
+	public void realizarPedidoTest() {		
 		// UT 6.a Persona sin descuento
 		sut.onAnhadirAlCarro(leche, 3);
 		sut.onAnhadirAlCarro(pan, 1);
