@@ -8,6 +8,7 @@
   	<module>Practica3ProcesosCommon</module>
   	<module>Practica3ProcesosBusiness</module>
   	<module>Practica3ProcesosDAO</module>
+  	<module>Practica3ProcesosEAR</module>
   </modules>
   
   <dependencies>
@@ -22,6 +23,13 @@
 	  <groupId>junit</groupId>
 	  <artifactId>junit</artifactId>
 	  <version>4.13.2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.glassfish.main.extras</groupId>
+	    <artifactId>glassfish-embedded-all</artifactId>
+	    <version>5.0</version>
+	    <scope>test</scope>
 	</dependency>
   
   </dependencies>

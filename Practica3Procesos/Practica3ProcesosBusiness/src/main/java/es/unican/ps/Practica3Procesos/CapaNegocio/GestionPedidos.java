@@ -116,6 +116,8 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 		return u;
 	}
 	
-	
+	/*public void setPedidosDAO(IPedidosDAO daoRemote) {
+		pedidosDAO = daoRemote;
+	}*/
 
 }

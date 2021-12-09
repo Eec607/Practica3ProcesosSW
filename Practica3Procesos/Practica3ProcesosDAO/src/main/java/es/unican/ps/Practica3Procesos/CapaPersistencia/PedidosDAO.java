@@ -17,12 +17,15 @@ public class PedidosDAO implements IPedidosDAO {
 	private EntityManager em;
 
 	public Pedido creaPedido(Pedido p) {
-		try {
-			em.persist(p);
-			return p;
-		} catch(EntityExistsException e) {
-			return null;
-		}		
+		if (p != null) {
+			try {
+				em.persist(p);
+			} catch(EntityExistsException e) {
+				p = null;
+			}
+		}
+		
+		return p;
 	}
 
 	public Pedido eliminaPedido(String ref) {
@@ -44,9 +47,14 @@ public class PedidosDAO implements IPedidosDAO {
 		return em.find(Pedido.class, ref);
 	}
 
+	@SuppressWarnings("unchecked")
 	public Set<Pedido> pedidos() {
 		Query q = em.createQuery("SELECT p FROM Pedido p");
 		return (Set<Pedido>) q.getResultList();
+	}
+	
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
 	}
 
 }
