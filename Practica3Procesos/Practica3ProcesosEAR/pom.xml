@@ -18,6 +18,7 @@
 			<groupId>es.unican.ps</groupId>
 			<artifactId>Practica3ProcesosBusiness</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>es.unican.ps</groupId>
@@ -28,6 +29,7 @@
 			<groupId>es.unican.ps</groupId>
 			<artifactId>Practica3ProcesosDAO</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 	
@@ -54,14 +56,15 @@
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
-						<jarModule>
+						<ejbModule>
 							<groupId>es.unican.ps</groupId>
 							<artifactId>Practica3ProcesosBusiness</artifactId>
-						</jarModule>
-						<jarModule>
+
+						</ejbModule>
+						<ejbModule>
 							<groupId>es.unican.ps</groupId>
 							<artifactId>Practica3ProcesosDAO</artifactId>
-						</jarModule>
+						</ejbModule>
 						<jarModule>
 							<groupId>es.unican.ps</groupId>
 							<artifactId>Practica3ProcesosCommon</artifactId>

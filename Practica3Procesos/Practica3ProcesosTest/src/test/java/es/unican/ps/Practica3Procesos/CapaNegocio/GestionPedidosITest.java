@@ -49,10 +49,14 @@ public class GestionPedidosITest {
 				"C:/Users/educa/OneDrive/Escritorio/UC_4/Procesos_SW/glassfish5/glassfish");
 		//Creación del EJBContainer con propiedades
 		ec = EJBContainer.createEJBContainer(properties);
-		daoRemote = (IPedidosDAO) ec.getContext().lookup("java:global/ejb-app/classesejb/PedidosDAO!es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO");
-		sut = (IGestionPedidos) ec.getContext().lookup("java:global/ejb-app/classesejb/GestionPedidos!es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos");
-		
-		//java:global/nombreEAR/nombreEJB!myBeans.interfaz
+		//mvn test
+		//daoRemote = (IPedidosDAO) ec.getContext().lookup("java:global/ejb-app/classesejb/PedidosDAO!es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO");
+		//mvn package
+		daoRemote = (IPedidosDAO) ec.getContext().lookup("java:global/ejb-app/Practica3ProcesosDAO-0_0_1-SNAPSHOT/PedidosDAO!es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO");
+		//mvn test
+		//sut = (IGestionPedidos) ec.getContext().lookup("java:global/ejb-app/classesejb/GestionPedidos!es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos");
+		//mvn package
+		sut = (IGestionPedidos) ec.getContext().lookup("java:global/ejb-app/Practica3ProcesosBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos");
 	}
 
 	@AfterClass

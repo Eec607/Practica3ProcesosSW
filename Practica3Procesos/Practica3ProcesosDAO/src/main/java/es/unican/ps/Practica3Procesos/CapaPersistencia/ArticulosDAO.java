@@ -3,6 +3,7 @@ package es.unican.ps.Practica3Procesos.CapaPersistencia;
 import java.util.Set;
 
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +11,7 @@ import javax.persistence.Query;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
 
-@Stateful
+@Stateless
 public class ArticulosDAO implements es.unican.ps.Practica3Procesos.InterfacesDominio.IArticulosDAO {
 	
 	@PersistenceContext(unitName="SupermercadosPU")

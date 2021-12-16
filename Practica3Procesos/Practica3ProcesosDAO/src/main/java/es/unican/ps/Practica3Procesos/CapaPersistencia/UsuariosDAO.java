@@ -1,9 +1,12 @@
 package es.unican.ps.Practica3Procesos.CapaPersistencia;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.ejb.ScheduleExpression;
 import javax.ejb.Stateful;
+import javax.ejb.StatefulTimeout;
+import javax.ejb.Stateless;
 import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
@@ -16,7 +19,7 @@ import javax.persistence.Query;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Usuario;
 
-@Stateful
+@Stateless
 public class UsuariosDAO implements es.unican.ps.Practica3Procesos.InterfacesDominio.IUsuariosDAO {
 	
 	@Resource
@@ -62,10 +65,10 @@ public class UsuariosDAO implements es.unican.ps.Practica3Procesos.InterfacesDom
 		return (Set<Usuario>) q.getResultList();
 	}
 	
-	/*@Timeout
+	@Timeout
 	public void limpiarComprasMensuales(Timer timer) {
 		Usuario usuario = (Usuario) timer.getInfo();
 		usuario.setComprasMensuales(0);
-	}*/
+	}
 
 }
