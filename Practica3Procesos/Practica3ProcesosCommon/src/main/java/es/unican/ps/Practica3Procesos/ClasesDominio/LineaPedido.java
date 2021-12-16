@@ -1,22 +1,29 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class LineaPedido {
-	
+public class LineaPedido implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int id;
-	
+
 	// Atributos
 	private int cantidad;
 	@OneToOne
 	@JoinColumn
 	private Articulo articulo;
-	
+
 	/**
 	 * Constructor de la clase LineaPedido
 	 * @param cantidad
@@ -26,7 +33,7 @@ public class LineaPedido {
 		this.cantidad = cantidad;
 		this.articulo = articulo;
 	}
-	
+
 	public LineaPedido() { }
 
 	/**
@@ -52,7 +59,7 @@ public class LineaPedido {
 	public Articulo getArticulo() {
 		return articulo;
 	}
-	
-	
+
+
 
 }

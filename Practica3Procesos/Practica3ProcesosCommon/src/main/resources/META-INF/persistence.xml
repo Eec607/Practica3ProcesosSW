@@ -6,7 +6,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	<!-- Cuando lo despleguemos en glassfish, debe ser JTA -->
 	<persistence-unit name="SupermercadosPU" transaction-type="JTA"> 
 		<!--Datos de acceso a la BBDD -->
-		<jta-data-source>jdbc:/Supermercados</jta-data-source>
+		<jta-data-source>jdbc/Supermercados</jta-data-source>
 		
 		<!-- Asignación de propiedades propias del proveedor de persistencia -->
 		

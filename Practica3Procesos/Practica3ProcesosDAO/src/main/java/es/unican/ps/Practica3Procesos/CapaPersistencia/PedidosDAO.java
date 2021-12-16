@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Pedido;
 
 @Stateful
-public class PedidosDAO implements IPedidosDAO {
+public class PedidosDAO implements es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO {
 	
 	@PersistenceContext(unitName="SupermercadosPU")
 	private EntityManager em;

@@ -1,11 +1,18 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Articulo {
+public class Articulo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private int id;
 	
@@ -40,6 +47,14 @@ public class Articulo {
 	}
 	public void setPrecio(double precio) {
 		this.precio = precio;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 

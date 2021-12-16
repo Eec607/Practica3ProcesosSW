@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
 
 @Stateful
-public class ArticulosDAO implements IArticulosDAO {
+public class ArticulosDAO implements es.unican.ps.Practica3Procesos.InterfacesDominio.IArticulosDAO {
 	
 	@PersistenceContext(unitName="SupermercadosPU")
 	private EntityManager em;
@@ -40,6 +40,7 @@ public class ArticulosDAO implements IArticulosDAO {
 		return a;
 	}
 
+	//Buscar por id?
 	public Articulo articulo(String nombre) {
 		return em.find(Articulo.class, nombre);
 	}

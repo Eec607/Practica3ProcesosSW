@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>es.unican.ps</groupId>
+    <artifactId>Practica3Procesos</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>Practica3ProcesosTest</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>Practica3ProcesosCommon</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>Practica3ProcesosDAO</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>es.unican.ps</groupId>
+  		<artifactId>Practica3ProcesosBusiness</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	
+  	<dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <version>4.13.2</version>
+	</dependency>
+  
+  </dependencies>
+</project>

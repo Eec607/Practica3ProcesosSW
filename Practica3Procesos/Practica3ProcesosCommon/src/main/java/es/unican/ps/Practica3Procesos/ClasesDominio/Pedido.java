@@ -1,4 +1,5 @@
 package es.unican.ps.Practica3Procesos.ClasesDominio;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -14,7 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Pedido {
+public class Pedido implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private int id;

@@ -9,6 +9,7 @@
   	<module>Practica3ProcesosBusiness</module>
   	<module>Practica3ProcesosDAO</module>
   	<module>Practica3ProcesosEAR</module>
+  	<module>Practica3ProcesosTest</module>
   </modules>
   
   <dependencies>

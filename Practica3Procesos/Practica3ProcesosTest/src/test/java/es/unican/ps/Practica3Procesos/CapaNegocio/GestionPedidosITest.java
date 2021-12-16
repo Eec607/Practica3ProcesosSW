@@ -22,13 +22,14 @@ import es.unican.ps.Practica3Procesos.ClasesDominio.Estado;
 import es.unican.ps.Practica3Procesos.ClasesDominio.LineaPedido;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Pedido;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Usuario;
+import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO;
 
 public class GestionPedidosITest {
 	
 	private static EJBContainer ec;
 	private static IPedidosDAO daoRemote;
-	private static GestionPedidos sut;	
+	private static IGestionPedidos sut;	
 	
 	Usuario u, u2;
 	Pedido p, p2;
@@ -48,9 +49,10 @@ public class GestionPedidosITest {
 				"C:/Users/educa/OneDrive/Escritorio/UC_4/Procesos_SW/glassfish5/glassfish");
 		//Creación del EJBContainer con propiedades
 		ec = EJBContainer.createEJBContainer(properties);
-		daoRemote = (IPedidosDAO) ec.getContext().lookup
-				("java:global/Practica3Procesos/es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO");
-		sut = (GestionPedidos) ec.getContext().lookup("java:global/Practica3Procesos/es.unican.ps.Practica3Procesos.CapaNegocio.GestionPedidos");
+		daoRemote = (IPedidosDAO) ec.getContext().lookup("java:global/ejb-app/classesejb/PedidosDAO!es.unican.ps.Practica3Procesos.InterfacesDominio.IPedidosDAO");
+		sut = (IGestionPedidos) ec.getContext().lookup("java:global/ejb-app/classesejb/GestionPedidos!es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos");
+		
+		//java:global/nombreEAR/nombreEJB!myBeans.interfaz
 	}
 
 	@AfterClass
@@ -84,9 +86,13 @@ public class GestionPedidosITest {
 		
 		// Creamos los articulos
 		leche = new Articulo("Leche", 80, 1.0);
+		leche.setId(1);
 		pan = new Articulo("Pan", 30, 0.5);
+		pan.setId(2);
 		huevos = new Articulo("Huevos", 50, 1.5);
+		huevos.setId(3);
 		chocolate = new Articulo("Chocolate", 25, 1.0);
+		chocolate.setId(4);
 		
 		// Añado los articulos al pedido p. Precio total p: 3.5
 		p.getLineasPedido().add(new LineaPedido(3, leche));
@@ -124,7 +130,7 @@ public class GestionPedidosITest {
 		Assert.assertEquals(pedido2.getPrecio(), 7.6, 0.1);
 		
 		// IT 6.c Hora no válida - retorna null
-		Assert.assertNull(sut.realizarPedido(LocalTime.of(23, 45), u2));			
+		Assert.assertNull(sut.realizarPedido(LocalTime.of(23, 45), u2));
 	}
 
 }
