@@ -10,6 +10,7 @@
   	<module>Practica3ProcesosDAO</module>
   	<module>Practica3ProcesosEAR</module>
   	<module>Practica3ProcesosTest</module>
+  	<module>Practica3ProcesosWeb</module>
   </modules>
   
   <dependencies>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>SupermercadosOnline</title>
+</h:head>
+<h:body>
+	<h1>Artículos</h1>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:dataTable value="#{ListaArticulosBean.articulos}" var=“articulo“
+				border="0" cellpadding="5" cellspacing="0" rules="all"
+				style="border:solid 1px">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{articulo.nombre}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Precio" />
+					</f:facet>
+					<h:outputText value="#{articulo.precio}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="" />
+					</f:facet>
+					<h:link value="Añadir al carro"
+						outcome="#{ListaArticuloBean.verArticulo(articulo.nombre)}" />
+
+				</h:column>
+			</h:dataTable>
+
+		</h:panelGrid>
+
+		<h:commandButton value="Ver Carro"
+			action="#{ListaArticulosBean.verCarro}" />
+
+	</h:form>
+</h:body>
+</html>
