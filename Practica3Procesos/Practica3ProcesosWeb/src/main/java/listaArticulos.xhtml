@@ -29,8 +29,10 @@
 					<f:facet name="header">
 						<h:outputText value="" />
 					</f:facet>
-					<h:link value="Añadir al carro"
-						outcome="#{ListaArticuloBean.verArticulo(articulo.nombre)}" />
+					<h:commandLink action="#{ListaArticuloBean.verArticulo}"
+						value="Añadir al carro">
+						<f:param name="nombre" value="articulo.nombre" />
+					</h:commandLink>
 
 				</h:column>
 			</h:dataTable>

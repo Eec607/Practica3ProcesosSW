@@ -10,15 +10,15 @@ public class VerArticuloBean {
 	@EJB
 	private IGestionPedidos supermercado;
 	
-	private Articulo articulo;
+	private static Articulo articulo;
 	private int uds;
 
 	public Articulo getArticulo() {
 		return articulo;
 	}
 
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
+	public static void setArticulo(Articulo a) {
+		articulo = a;
 	}
 	
 	public int getUds() {
