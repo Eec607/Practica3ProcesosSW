@@ -1,8 +1,7 @@
 package es.unican.ps.Practica3Procesos.CapaPersistencia;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
@@ -41,13 +40,12 @@ public class ArticulosDAO implements es.unican.ps.Practica3Procesos.InterfacesDo
 		return a;
 	}
 
-	//Buscar por id?
 	public Articulo articulo(String nombre) {
 		return em.find(Articulo.class, nombre);
 	}
 
-	public Set<Articulo> articulos() {
+	public List<Articulo> articulos() {
 		Query q = em.createQuery("SELECT a FROM Articulo a");
-		return (Set<Articulo>) q.getResultList();
+		return (List<Articulo>) q.getResultList();
 	}
 }

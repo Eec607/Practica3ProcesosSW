@@ -1,16 +1,20 @@
 package es.unican.ps.Practica3Procesos.web;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Usuario;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionRegistro;
 
+@Named
+@RequestScoped
 public class LoginBean {
 	
 	@EJB
 	private IGestionRegistro usuario;
 	
-	private String dni;
+	private String dni = "";
 
 	public String getDni() {
 		return dni;
@@ -20,7 +24,7 @@ public class LoginBean {
 		this.dni = dni;
 	}
 	
-	public String checkDni(String dni) {
+	public String checkDni() {
 		Usuario u = usuario.onLogin(dni);
 		String result;
 		if (u==null) {

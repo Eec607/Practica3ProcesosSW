@@ -3,9 +3,11 @@ package es.unican.ps.Practica3Procesos.CapaNegocio;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -22,8 +24,11 @@ import es.unican.ps.Practica3Procesos.InterfacesDominio.IUsuariosDAO;
 @Stateful
 public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos{
 	
+	@EJB
 	private IPedidosDAO pedidosDAO;
+	@EJB
 	private IUsuariosDAO usuariosDAO;
+	@EJB
 	private IArticulosDAO articulosDAO;
 	
 	private static LocalTime horaApertura = LocalTime.of(9, 0);
@@ -66,6 +71,7 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 				}
 				id++;
 				pedidosPendientes.add(p);
+				u.incrementarComprasMensuales();
 			}
 		}		
 		return p;		
@@ -80,7 +86,7 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 		return a;
 	}
 
-	public Set<Articulo> onVerListaArticulos() {
+	public List<Articulo> onVerListaArticulos() {
 		return articulosDAO.articulos();
 	}
 	

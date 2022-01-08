@@ -61,7 +61,7 @@ public class UsuariosDAO implements es.unican.ps.Practica3Procesos.InterfacesDom
 	}
 
 	public Set<Usuario> usuarios() {
-		Query q = em.createQuery("SELECT u FROM Usuario u");
+		Query q = em.createQuery("SELECT * FROM Usuario u");
 		return (Set<Usuario>) q.getResultList();
 	}
 	

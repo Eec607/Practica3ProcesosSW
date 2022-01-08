@@ -1,5 +1,6 @@
 package es.unican.ps.Practica3Procesos.CapaNegocio;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -9,6 +10,7 @@ import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionArticulos;
 @Stateful
 public class GestionArticulos implements IGestionArticulos {
 	
+	@EJB
 	private IArticulosDAO articulosDAO;
 
 	public Articulo anhadirArticulo(Articulo a) {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>SupermercadosOnline</title>
@@ -9,9 +10,7 @@
 <h:body style="height: 274px; ">
 	<h1>Carro Compra</h1>
 	<h:form>
-		<h:dataTable value="#{CarroBean.lineasPedido}" var=“lineaPedido“
-			border="0" cellpadding="5" cellspacing="0" rules="all"
-			style="border:solid 1px">
+		<h:dataTable value="#{carroBean.lineasPedido}" var="lineaPedido" border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Nombre" />
@@ -26,15 +25,15 @@
 			</h:column>
 		</h:dataTable>
 
-		<h:outputText value="Precio: #{CarroBean.calculaPrecio}" />
+		<h:outputText value="Precio: #{carroBean.precio}" />
 
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Hora recogida: " />
-			<h:inputText value="#{CarroBean.horaRecogida}" />
+			<h:inputText value="#{carroBean.horaRecogida}" />
 		</h:panelGrid>
 
-		<h:commandButton value="Seguir comprando" action="#{CarroBean.verArticulos}" />
-		<h:commandButton value="Confirmar carro" action="#{CarroBean.confirmarCarro}" />
+		<h:commandButton value="Seguir comprando" outcome="listaArticulos.xhtml" />
+		<h:commandButton value="Confirmar carro" outcome="confirmarCarro.xhtml" />
 
 
 	</h:form>

@@ -1,6 +1,7 @@
 package es.unican.ps.Practica3Procesos.InterfacesDominio;
 
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -18,7 +19,7 @@ public interface IGestionPedidos {
 	
 	Articulo onAnhadirAlCarro(Articulo a, int uds);
 	
-	Set<Articulo> onVerListaArticulos();
+	List<Articulo> onVerListaArticulos();
 	
 	void limpiarCarro();
 }

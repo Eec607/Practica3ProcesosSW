@@ -1,5 +1,6 @@
 package es.unican.ps.Practica3Procesos.CapaNegocio;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Usuario;
@@ -9,6 +10,7 @@ import es.unican.ps.Practica3Procesos.InterfacesDominio.IUsuariosDAO;
 @Stateful
 public class GestionRegistro implements IGestionRegistro {
 	
+	@EJB
 	private IUsuariosDAO usuariosDAO;
 
 	public Usuario registrarUsuario(Usuario u) {

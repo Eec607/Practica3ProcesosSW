@@ -14,12 +14,10 @@ public class Usuario implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	private int id;
 	
 	// Atributos de Usuario
 	private String nombre;
+	@Id
 	private String dni;
 	private String direccion;
 	private String email;

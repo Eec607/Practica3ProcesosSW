@@ -1,27 +1,41 @@
 package es.unican.ps.Practica3Procesos.web;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.ManagedProperty;
+import javax.inject.Named;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos;
 
+@Named
+@RequestScoped
 public class ListaArticulosBean {
 	@EJB
 	private IGestionPedidos carro;
 	
-	private Map<String, Articulo> articulos = new HashMap<String, Articulo>();
+	private List<Articulo> articulos = new ArrayList<Articulo>();
 	@ManagedProperty(value = "#{param.nombre}")
 	private String articuloSeleccionado;
 	
-	public Map<String, Articulo> getArticulos() {
+	public ListaArticulosBean() {
+		
+	}
+	
+	@PostConstruct
+	public void cargaArticulos() {
+		articulos = carro.onVerListaArticulos();
+	}
+	
+	public List<Articulo> getArticulos() {
 		return articulos;
 	}
 
-	public void setArticulos(Map<String, Articulo> articulos) {
+	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
 
@@ -38,7 +52,6 @@ public class ListaArticulosBean {
 	}
 	
 	public String verArticulo() {
-		VerArticuloBean.setArticulo(articulos.get(articuloSeleccionado));
 		return "verArticulo.xhtml";
 	}
 

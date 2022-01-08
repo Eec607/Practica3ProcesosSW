@@ -1,5 +1,7 @@
 package es.unican.ps.Practica3Procesos.InterfacesDominio;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import javax.ejb.Remote;
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -15,6 +17,6 @@ public interface IArticulosDAO {
 	
 	Articulo articulo(String nombre);
 	
-	Set<Articulo> articulos();
+	List<Articulo> articulos();
 
 }

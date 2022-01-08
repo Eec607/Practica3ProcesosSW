@@ -5,10 +5,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.LineaPedido;
 import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos;
 
+@Named
+@RequestScoped
 public class CarroBean {
 	
 	@EJB
@@ -16,6 +20,7 @@ public class CarroBean {
 	
 	private Set<LineaPedido> lineasPedido = new HashSet<LineaPedido>();
 	private Date horaRecogida;
+	private double precio;
 	
 	public Set<LineaPedido> getLineasPedido() {
 		return lineasPedido;
@@ -33,7 +38,12 @@ public class CarroBean {
 		this.horaRecogida = horaRecogida;
 	}
 	
-	public double calculaPrecio() {
+	public double getPrecio() {
+		precio = calculaPrecio();
+		return precio;
+	}
+	
+	private double calculaPrecio() {
 		double precio = 0.0;
 		
 		for(LineaPedido l : lineasPedido) {

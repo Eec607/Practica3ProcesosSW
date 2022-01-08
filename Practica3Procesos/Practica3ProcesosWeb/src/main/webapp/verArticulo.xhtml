@@ -7,18 +7,18 @@
 	<title>SupermercadosOnline</title>
 </h:head>
 <h:body>
-	<h1>Mi Supermercado</h1>
+	<h1>Articulo Seleccionado</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="DNI : " />
-			<h:inputText value="#{LoginBean.dni}" />
-
-
+			<h:outputLabel value="Artículo : " />
+			<h:outputText value="#{verArticuloBean.articulo.nombre}" />
+			<h:outputLabel value="Unidades : " />
+			<h:inputText value="#{verArticuloBean.uds}" />
 		</h:panelGrid>
 
-		<h:commandButton value="Entrar" action="#{LoginBean.checkDni}" />
-		<h:commandButton value="Registro" action="#{}" />
-		
+		<h:commandButton value="Volver" action="#{verArticuloBean.volver}" />
+		<h:commandButton value="Añadir a carro" action="#{verArticuloBean.anhadirCarro}" />
+
 	</h:form>
 </h:body>
 </html>

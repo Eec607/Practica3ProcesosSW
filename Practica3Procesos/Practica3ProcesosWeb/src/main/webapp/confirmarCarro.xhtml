@@ -7,18 +7,18 @@
 	<title>SupermercadosOnline</title>
 </h:head>
 <h:body>
-	<h1>Articulo Seleccionado</h1>
+	<h1>Pedido Realizado</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="Artículo : " />
-			<h:outputText value="#{VerArticuloBean.articulo.getNombre}" />
-			<h:outputLabel value="Unidades : " />
-			<h:inputText value="#{VerArticuloBean.uds}" />
+			<h:outputLabel value="Referencia: " />
+			<h:outputText value="#{confirmarCarroBean.pedido.getReferencia}" />
+			<h:outputLabel value="Precio: " />
+			<h:outputText value="#{confirmarCarroBean.pedido.getPrecio}" />
+			<h:outputLabel value="Hora recogida: " />
+			<h:outputText value="#{confirmarCarroBean.pedido.getHoraRecogida}" />
 		</h:panelGrid>
 
-		<h:commandButton value="Volver" action="#{VerArticuloBean.volver}" />
-		<h:commandButton value="Añadir a carro"
-			action="#{VerArticuloBean.anhadirCarro}" />
+		<h:commandButton value="Inicio" action="#{confirmarCarroBean.inicio}" />
 
 	</h:form>
 </h:body>

@@ -50,7 +50,7 @@ public class PedidosDAO implements es.unican.ps.Practica3Procesos.InterfacesDomi
 
 	@SuppressWarnings("unchecked")
 	public Set<Pedido> pedidos() {
-		Query q = em.createQuery("SELECT p FROM Pedido p");
+		Query q = em.createQuery("SELECT * FROM Pedido p");
 		return (Set<Pedido>) q.getResultList();
 	}
 	
