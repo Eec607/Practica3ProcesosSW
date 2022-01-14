@@ -15,13 +15,13 @@
 				<f:facet name="header">
 					<h:outputText value="Nombre" />
 				</f:facet>
-				<h:outputText value="#{lineaPedido.getArticulo.getNombre}" />
+				<h:outputText value="#{lineaPedido.articulo.nombre}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Unidades" />
 				</f:facet>
-				<h:outputText value="#{lineaPedido.getCantidad}" />
+				<h:outputText value="#{lineaPedido.cantidad}" />
 			</h:column>
 		</h:dataTable>
 
@@ -32,10 +32,11 @@
 			<h:inputText value="#{carroBean.horaRecogida}" />
 		</h:panelGrid>
 
-		<h:commandButton value="Seguir comprando" outcome="listaArticulos.xhtml" />
-		<h:commandButton value="Confirmar carro" outcome="confirmarCarro.xhtml" />
-
+		<h:commandButton value="Seguir comprando" action="#{carroBean.verArticulos}" />
+		<h:commandButton value="Confirmar carro" action="#{carroBean.confirmarCarro}" />
+		
 
 	</h:form>
+	
 </h:body>
 </html>

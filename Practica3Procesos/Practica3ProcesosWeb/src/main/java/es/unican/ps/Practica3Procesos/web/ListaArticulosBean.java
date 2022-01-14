@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.annotation.ManagedProperty;
 import javax.inject.Named;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -19,8 +18,6 @@ public class ListaArticulosBean {
 	private IGestionPedidos carro;
 	
 	private List<Articulo> articulos = new ArrayList<Articulo>();
-	@ManagedProperty(value = "#{param.nombre}")
-	private String articuloSeleccionado;
 	
 	public ListaArticulosBean() {
 		
@@ -38,20 +35,13 @@ public class ListaArticulosBean {
 	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
-
-	public String getArticuloSeleccionado() {
-		return articuloSeleccionado;
-	}
-
-	public void setArticuloSeleccionado(String articuloSeleccionado) {
-		this.articuloSeleccionado = articuloSeleccionado;
-	}
 	
 	public String verCarro() {
 		return "verCarro.xhtml";
 	}
 	
-	public String verArticulo() {
+	public String verArticulo(Articulo a) {
+		VerArticuloBean.pasaArticulo(a);
 		return "verArticulo.xhtml";
 	}
 

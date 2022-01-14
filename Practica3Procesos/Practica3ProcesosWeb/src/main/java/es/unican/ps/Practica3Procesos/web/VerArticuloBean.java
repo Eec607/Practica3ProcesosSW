@@ -1,8 +1,8 @@
 package es.unican.ps.Practica3Procesos.web;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.annotation.ManagedProperty;
 import javax.inject.Named;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
@@ -15,9 +15,16 @@ public class VerArticuloBean {
 	@EJB
 	private IGestionPedidos supermercado;
 	
-	@ManagedProperty(value = "articulo")
-	private Articulo articulo;
+	private static Articulo articulo;
+	private String nombre;
 	private int uds;
+	
+	public VerArticuloBean() {}
+	
+	@PostConstruct
+	public void cargaDatos() {
+		nombre = articulo.getNombre();
+	}
 
 	public Articulo getArticulo() {
 		return articulo;
@@ -34,15 +41,26 @@ public class VerArticuloBean {
 	public void setUds(int uds) {
 		this.uds = uds;
 	}	
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public String anhadirCarro() {
 		supermercado.onAnhadirAlCarro(articulo, uds);
-		return "verArticulo.xhtml";
+		return "listaArticulos.xhtml";
 	}
 	
 	public String volver() {
 		return "listaArticulos.xhtml";
 	}
 
+	public static void pasaArticulo(Articulo a) {
+		articulo = a;
+	}
 	
 }

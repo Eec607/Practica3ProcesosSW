@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,11 +17,19 @@ import es.unican.ps.Practica3Procesos.InterfacesDominio.IGestionPedidos;
 public class CarroBean {
 	
 	@EJB
-	private IGestionPedidos supermercado;
+	private IGestionPedidos carro;
 	
 	private Set<LineaPedido> lineasPedido = new HashSet<LineaPedido>();
 	private Date horaRecogida;
 	private double precio;
+	
+	
+	public CarroBean() {}
+	
+	@PostConstruct
+	public void cargaCarro() {
+		lineasPedido = carro.onVerCarro();
+	}
 	
 	public Set<LineaPedido> getLineasPedido() {
 		return lineasPedido;

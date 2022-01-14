@@ -8,7 +8,7 @@
 	<title>SupermercadosOnline</title>
 </h:head>
 <h:body>
-	<h1>Art√≠culos</h1>
+	<h1>Articulos</h1>
 	<h:form>
 		<h:panelGrid columns="3">
 			<h:dataTable value="#{listaArticulosBean.articulos}" var="articulo"	border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
@@ -28,8 +28,7 @@
 					<f:facet name="header">
 						<h:outputText value="" />
 					</f:facet>
-					<h:commandLink action="#{listaArticulosBean.verArticulo}" value="AÒadir al carro">
-						<f:param name="articulo" value="articulo" />
+					<h:commandLink action="#{listaArticulosBean.verArticulo(articulo)}" value="AÒadir al carro">
 					</h:commandLink>
 
 				</h:column>
@@ -37,8 +36,7 @@
 
 		</h:panelGrid>
 
-		<h:commandButton value="Ver Carro"
-			action="#{listaArticulosBean.verCarro}" />
+		<h:commandButton value="Ver Carro" action="#{listaArticulosBean.verCarro}" />
 
 	</h:form>
 </h:body>
