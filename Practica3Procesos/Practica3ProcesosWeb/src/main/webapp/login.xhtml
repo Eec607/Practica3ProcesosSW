@@ -12,13 +12,13 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="DNI : " />
-			<h:inputText value="#{loginBean.dni}" />
+			<h:inputText value="#{articulosBean.dni}" />
 
 
 		</h:panelGrid>
 
-		<h:commandButton value="Entrar" action="#{loginBean.checkDni}" />
-		<h:commandButton value="Registro" outcome="login.xhtml" />
+		<h:commandButton value="Entrar" action="#{articulosBean.checkDni}" />
+		<h:commandButton value="Registro" action="#{articulosBean.login}" />
 		
 	</h:form>
 </h:body>

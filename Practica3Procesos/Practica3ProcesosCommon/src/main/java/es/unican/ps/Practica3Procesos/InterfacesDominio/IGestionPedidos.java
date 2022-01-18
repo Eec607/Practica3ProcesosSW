@@ -2,7 +2,6 @@ package es.unican.ps.Practica3Procesos.InterfacesDominio;
 
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Set;
 
 import es.unican.ps.Practica3Procesos.ClasesDominio.Articulo;
 import es.unican.ps.Practica3Procesos.ClasesDominio.LineaPedido;
@@ -15,7 +14,7 @@ import javax.ejb.Remote;
 public interface IGestionPedidos {
 	Pedido realizarPedido(LocalTime horaRecogida, Usuario u);
 	
-	Set<LineaPedido> onVerCarro();
+	List<LineaPedido> onVerCarro();
 	
 	Articulo onAnhadirAlCarro(Articulo a, int uds);
 	

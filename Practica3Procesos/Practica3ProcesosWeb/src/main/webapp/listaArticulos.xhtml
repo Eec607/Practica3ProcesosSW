@@ -11,7 +11,7 @@
 	<h1>Articulos</h1>
 	<h:form>
 		<h:panelGrid columns="3">
-			<h:dataTable value="#{listaArticulosBean.articulos}" var="articulo"	border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
+			<h:dataTable value="#{articulosBean.articulos}" var="articulo"	border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="Nombre" />
@@ -28,7 +28,7 @@
 					<f:facet name="header">
 						<h:outputText value="" />
 					</f:facet>
-					<h:commandLink action="#{listaArticulosBean.verArticulo(articulo)}" value="Añadir al carro">
+					<h:commandLink action="#{articulosBean.verArticulo(articulo)}" value="Añadir al carro">
 					</h:commandLink>
 
 				</h:column>
@@ -36,7 +36,9 @@
 
 		</h:panelGrid>
 
-		<h:commandButton value="Ver Carro" action="#{listaArticulosBean.verCarro}" />
+		<h:commandButton value="Volver" action="#{articulosBean.login}" />
+		<h:commandButton value="Ver Carro" action="#{articulosBean.verCarro}" />
+		
 
 	</h:form>
 </h:body>

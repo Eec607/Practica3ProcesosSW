@@ -25,5 +25,9 @@ public class GestionRegistro implements IGestionRegistro {
 		}
 		return user;
 	}
+	
+	public Usuario actualizaUsuario(Usuario u) {
+		return usuariosDAO.actualizaUsuario(u);
+	}
 
 }

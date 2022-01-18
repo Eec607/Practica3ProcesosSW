@@ -8,4 +8,6 @@ public interface IGestionRegistro {
 	Usuario registrarUsuario(Usuario u);
 	
 	Usuario onLogin(String dni);
+	
+	Usuario actualizaUsuario(Usuario u);
 }

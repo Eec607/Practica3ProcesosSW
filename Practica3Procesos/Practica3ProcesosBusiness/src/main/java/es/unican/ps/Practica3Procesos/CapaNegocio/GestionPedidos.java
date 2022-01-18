@@ -2,9 +2,8 @@ package es.unican.ps.Practica3Procesos.CapaNegocio;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.Stack;
 
 import javax.ejb.EJB;
@@ -35,9 +34,10 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 	private static LocalTime horaCierre = LocalTime.of(21, 0);
 	
 	private Stack<Pedido> pedidosPendientes = new Stack<Pedido>();
-	private Set<LineaPedido> lineasPedido = new HashSet<LineaPedido>();
+	private List<LineaPedido> lineasPedido = new ArrayList<LineaPedido>();
+
 	private int id = 0;
-	private String ref = "A"+id;
+	private String ref;
 
 	public Pedido entregaPedido(String dni, String ref) {
 		Pedido p = buscaPedido(ref);
@@ -60,6 +60,7 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 
 	public Pedido realizarPedido(LocalTime horaRecogida, Usuario u) {
 		Pedido p = null;		
+		ref = "A"+id;
 		// Comprobar usuario
 		if (u != null) {
 			// Comprobar la hora de recogida
@@ -71,13 +72,12 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 				}
 				id++;
 				pedidosPendientes.add(p);
-				u.incrementarComprasMensuales();
 			}
 		}		
 		return p;		
 	}
 
-	public Set<LineaPedido> onVerCarro() {
+	public List<LineaPedido> onVerCarro() {
 		return lineasPedido;
 	}
 
@@ -91,7 +91,7 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 	}
 	
 	public void limpiarCarro() {
-		this.lineasPedido.clear();
+		lineasPedido.clear();
 	}
 	
 	/**
@@ -120,6 +120,14 @@ public class GestionPedidos implements IGestionPedidos, IGestionPreparadoPedidos
 		}
 		u = usuariosDAO.usuario(dni);
 		return u;
+	}
+	
+	public List<LineaPedido> getLineasPedido() {
+		return lineasPedido;
+	}
+
+	public void setLineasPedido(List<LineaPedido> lineasPedido) {
+		this.lineasPedido = lineasPedido;
 	}
 	
 

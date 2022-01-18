@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Fri Jan 14 13:06:54 CET 2022:
- Iniciando instancia a816c00e-017e-587b-c900-000001879b90 de Derby, versión The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): 
-en el directorio de base de datos C:\Users\educa\AppData\Local\Temp\gfembed7510623078127633384tmp\lib\databases\ejbtimer con el cargador de clases sun.misc.Launcher$AppClassLoader@a57993
+Tue Jan 18 18:12:38 CET 2022:
+ Iniciando instancia a816c00e-017e-6e2d-1fd6-000001dbad08 de Derby, versión The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): 
+en el directorio de base de datos C:\Users\educa\AppData\Local\Temp\gfembed3843512563168028323tmp\lib\databases\ejbtimer con el cargador de clases sun.misc.Launcher$AppClassLoader@a57993
 Cargado desde file:/C:/Users/educa/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/5.0/glassfish-embedded-all-5.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_202-b08

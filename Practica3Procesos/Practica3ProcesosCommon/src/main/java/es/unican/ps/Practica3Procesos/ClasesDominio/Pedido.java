@@ -2,9 +2,9 @@ package es.unican.ps.Practica3Procesos.ClasesDominio;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -40,7 +40,7 @@ public class Pedido implements Serializable{
 	// Conjunto de lineas de pedido
 	@OneToMany
 	@JoinColumn
-	private Set<LineaPedido> lineasPedido;
+	private List<LineaPedido> lineasPedido;
 	
 	/**
 	 * Constructor de la clase Pedido
@@ -57,7 +57,7 @@ public class Pedido implements Serializable{
 		this.horaRecogida = horaRecogida;
 		this.usuario = usuario;
 		precio = 0.0;
-		lineasPedido = new HashSet<LineaPedido>();
+		lineasPedido = new ArrayList<LineaPedido>();
 	}
 	
 	
@@ -70,7 +70,7 @@ public class Pedido implements Serializable{
 	 * @param usuario
 	 * @param lineasPedido
 	 */
-	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario, Set<LineaPedido> lineasPedido) {
+	public Pedido(String referencia, Estado estado, LocalDate fecha, LocalTime horaRecogida, Usuario usuario, List<LineaPedido> lineasPedido) {
 		this.referencia = referencia;
 		this.estado = estado;
 		this.fecha = fecha;
@@ -111,7 +111,7 @@ public class Pedido implements Serializable{
 	 * Devuelve las lineas de pedido del pedido
 	 * @return las lineas de pedido del pedido
 	 */
-	public Set<LineaPedido> getLineasPedido() {
+	public List<LineaPedido> getLineasPedido() {
 		return lineasPedido;
 	}
 	

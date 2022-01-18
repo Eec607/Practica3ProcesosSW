@@ -10,7 +10,7 @@
 <h:body style="height: 274px; ">
 	<h1>Carro Compra</h1>
 	<h:form>
-		<h:dataTable value="#{carroBean.lineasPedido}" var="lineaPedido" border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
+		<h:dataTable value="#{articulosBean.lineasPedido}" var="lineaPedido" border="0" cellpadding="5" cellspacing="0" rules="all" style="border:solid 1px">
 			<h:column>
 				<f:facet name="header">
 					<h:outputText value="Nombre" />
@@ -25,17 +25,19 @@
 			</h:column>
 		</h:dataTable>
 
-		<h:outputText value="Precio: #{carroBean.precio}" />
+		<h:outputText value="Precio: #{articulosBean.precio}" />
 
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Hora recogida: " />
-			<h:inputText value="#{carroBean.horaRecogida}" />
+			<h:inputText value="#{articulosBean.horaRecogida}">
+				<f:convertDateTime pattern="HH:mm:ss"/>
+			</h:inputText>
 		</h:panelGrid>
+            
 
-		<h:commandButton value="Seguir comprando" action="#{carroBean.verArticulos}" />
-		<h:commandButton value="Confirmar carro" action="#{carroBean.confirmarCarro}" />
+		<h:commandButton value="Seguir comprando" action="#{articulosBean.verArticulos}" />
+		<h:commandButton value="Confirmar carro" action="#{articulosBean.confirmarCarro}" />
 		
-
 	</h:form>
 	
 </h:body>
